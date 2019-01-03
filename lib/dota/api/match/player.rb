@@ -51,10 +51,18 @@ module Dota
           extract_items_from raw
         end
 
+        def backpack
+          extract_backpack_from raw
+        end
+
         private
 
         def extract_items_from(obj)
           (0..5).map { |i| Item.new(obj["item_#{i}"]) }
+        end
+
+        def extract_backpack_from(obj)
+          (0..2).map { |i| Item.new(obj["backpack_#{i}"]) }
         end
       end
     end
