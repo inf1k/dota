@@ -7,8 +7,15 @@ module Dota
 
       def initialize(id)
         @id = id
-        @internal_name = mapping[id][0]
-        @name = mapping[id][1]
+
+        # make old items "empty"
+        if mapping.key?(id)
+          @internal_name = mapping[id][0]
+          @name = mapping[id][1]
+        else
+          @internal_name = mapping[0][0]
+          @name = mapping[0][1]
+        end
       end
 
       # Possible values for type:
